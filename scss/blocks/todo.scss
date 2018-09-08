@@ -1,0 +1,292 @@
+.todo {
+    display: flex;
+    padding-top: 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5%;
+    &__block {
+        margin-top: 3%;
+        width: 32%;
+
+        @include md {
+            width: 100%;
+            margin-top: 50px;
+        }
+    
+
+        &--green {
+            .todo__list {
+                border-color: $green;
+            }
+
+            .todo__enter {
+                background-color: $green;
+            }
+        }
+
+        &--red {
+            .todo__list {
+                border-color: $red;
+            }
+
+            .todo__enter {
+                background-color: $red;
+            }
+        }
+
+        &--blue {
+            .todo__list {
+                border-color: $blue;
+            }
+
+            .todo__enter {
+                background-color: $blue;
+            }
+        }
+    }
+
+    &__logo {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $brown;
+        font-weight: bold;
+        font-size: 40px;
+        text-align: center;
+        width: 100%;
+
+        @include md {
+            font-size: 25px;
+        }
+    
+
+        &:after {
+            content: "'S";
+            color: $green;
+            font-size: 45px;
+            
+
+        @include md {
+            font-size: 28px;
+        }
+
+        }
+    }
+
+    &__add {
+        display: flex;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 10px 10px;
+        font-family: $font;
+        outline-color: $brown;
+    }
+
+    &__enter {
+        cursor: pointer;
+        background-color: $grey;
+        text-transform: uppercase;
+        border: 1px solid $grey-border;
+        font-size: 12px;
+        padding: 0 25px;
+        font-family: $font;
+        color: #fff;
+        outline-color: #fff;
+        color: #fff;
+        transition: 0.3s;
+    }
+
+    &__list {
+        margin-top: 10px;
+        background-color: #fff;
+        min-height: 50px;
+        box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.14);
+        border-top: 6px solid transparent;
+
+        &--green {
+            border-color: $green;
+        }
+
+        &--red {
+            border-color: $green;
+        }
+
+        &--blue {
+            border-color: $green;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px 5px;
+        border-top: 1px solid $grey;
+
+        &:last-child {
+            border-bottom: 1px solid $grey;
+        }
+
+        &--completed {
+
+            & .todo__name {
+                text-decoration:line-through;
+                color: $grey-border;
+            }
+
+            & .todo__check-btn {
+                border-color: $green;
+                background-color: $green;
+                background-position: center center;
+            }
+        }
+
+        &:hover {
+
+            & .todo__close {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__check-input {
+        display: none;
+    }
+
+    &__check-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid $grey;
+        margin-right: 20px;
+        cursor: pointer;
+        display: block;
+        background: transparent url('../src/assets/check.svg') -300px/60% no-repeat;
+        transition: 0.2s;
+
+        &:hover {
+            border-color: $green;
+        }
+    }
+
+    &__close {
+        width: 30px;
+        height: 30px;
+        background: url('../src/assets/close.svg') center/50% no-repeat;
+        margin-left: auto;
+        flex-shrink: 0;
+        cursor: pointer;
+        border: 1px solid $red;
+        border-radius: 50%;
+        opacity: 0;
+
+        @include max-width(1024px) {
+            opacity: 1;
+        }
+
+
+    }
+
+    &__controls {
+        background-color: #fff;
+        box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.14);
+        padding: 15px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__states {
+        display: inline-flex;
+    }
+
+    &__state {
+        margin: 0 10px;
+        color: $brown;
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: border-color 0.2s;
+        font-size: 12px;
+
+        @include max-width(568px) {
+            margin: 0 2px;
+        }
+
+        &--active {
+            border-color: $brown;
+            cursor: default;
+        }
+
+        &:hover {
+            border-color: $brown;
+        }
+    }
+
+    &__clear {
+        text-decoration: none;
+        color: $brown;
+        border: 1px solid $green;
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+
+    &__info {
+        padding: 5px 20px;
+        background-color: #fff;
+        border-top: 1px solid $grey;
+
+        &-list {
+            display: flex;
+        }
+
+        &-item {
+            display: inline-flex;
+            align-items: center;
+
+            &:not(:last-of-type) {
+                margin-right: 15px;
+            }
+        }
+
+        &-icon {
+            margin-right: 3px;
+            width: 17px;
+            fill: #000;
+            opacity: 0.5;
+
+            &--red {
+                fill: $red;
+                opacity: 1;
+            }
+
+            &--green {
+                fill: $green;
+                opacity: 1;
+            }
+        }
+
+        &-text {
+            font-size: 14px;
+            color: lighten(#000000, 20);
+        }
+    }
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.list-complete-item {
+    padding: 4px;
+    margin-top: 4px;
+    border: solid 1px;
+    transition: all 1s;
+  }
+  
+.list-complete-enter, .list-complete-leave-active {
+opacity: 0;
+}
